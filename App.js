@@ -1,20 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-export default function App() {
+import ManageGroceryList from './screens/ManageGroceryList';
+import RecentGroceries from './screens/RecentGroceries';
+import AllGroceryLists from './screens/AllGroceryLists';
+
+// creating stack const holds results of calling stackNavi
+// stack const will hold object access to two comps
+const Stack = createNativeStackNavigator();
+const BottomTabs = createBottomTabNavigator();
+
+// creating func comp for bottomtabs navi - nested navigation
+function GroceriesOverview() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <BottomTabs.Navigator>
+      <BottomTabs.Screen name="RecentGroceries" component={RecentGroceries} />
+      <BottomTabs.Screen name="AllGroceryLists" component={AllGroceryLists} />
+    </BottomTabs.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+    <>
+      <StatusBar style="auto" />
+      {/* setting up navigation config - navi container must be wrapped around all other navigation related comps */}
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="GroceriesOverview"
+            component={GroceriesOverview}
+          />
+          <Stack.Screen name="ManageGroceries" component={ManageGroceryList} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
+  );
+}
