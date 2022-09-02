@@ -1,13 +1,14 @@
-import { View, Text, FlatList } from 'react-native';
+import { View } from 'react-native';
+
+import GroceriesSummary from './GroceriesSummary';
+import GroceriesList from './GroceriesList';
 
 // expect to recieve groceries to display in list and summarized
-function GroceriesOutput({ groceries }) {
+function GroceriesOutput({ groceries, groceriesPeriod }) {
   return (
     <View>
-      <View>
-        <Text>Last 7 days</Text>
-      </View>
-      <FlatList />
+      <GroceriesSummary groceries={groceries} periodName={groceriesPeriod} />
+      <GroceriesList />
     </View>
   );
 }
