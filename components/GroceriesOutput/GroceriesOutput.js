@@ -1,7 +1,8 @@
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import GroceriesSummary from './GroceriesSummary';
 import GroceriesList from './GroceriesList';
+import { GlobalStyles } from '../../constants/styles';
 
 const DUMMY_GROCERIES = [
   {
@@ -34,7 +35,7 @@ const DUMMY_GROCERIES = [
 // expect to recieve groceries to display in list and summarized
 function GroceriesOutput({ groceries, groceriesPeriod }) {
   return (
-    <View>
+    <View style={styles.container}>
       <GroceriesSummary
         groceries={DUMMY_GROCERIES}
         periodName={groceriesPeriod}
@@ -45,3 +46,10 @@ function GroceriesOutput({ groceries, groceriesPeriod }) {
 }
 
 export default GroceriesOutput;
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 24,
+    backgroundColor: GlobalStyles.colors.primary700,
+  },
+});
