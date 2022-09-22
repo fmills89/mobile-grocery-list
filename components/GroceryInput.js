@@ -7,6 +7,7 @@ import {
   Modal,
   Image,
 } from 'react-native';
+import { GlobalStyles } from '../constants/styles';
 
 function GroceryInput(props) {
   const [enteredGroceryText, setEnteredGroceryText] = useState('');
@@ -35,14 +36,14 @@ function GroceryInput(props) {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title="Cancel" onPress={props.onCancel} color="#f31282" />
+            <Button
+              title="Add Grocery"
+              onPress={addGroceryHandler}
+              color={GlobalStyles.colors.accent500}
+            />
           </View>
           <View style={styles.button}>
-            <Button
-              title="Add Grocery Item"
-              onPress={addGroceryHandler}
-              color="#b180f0"
-            />
+            <Button title="Cancel" onPress={props.onCancel} color="#f31282" />
           </View>
         </View>
       </View>
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#311b6b',
+    backgroundColor: GlobalStyles.colors.primary800,
   },
   image: {
     width: 100,
@@ -67,9 +68,9 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderWidth: 1,
-    borderColor: '#e4d0ff',
-    backgroundColor: '#e4d0ff',
-    color: '#120438',
+    borderColor: GlobalStyles.colors.accent500,
+    backgroundColor: 'white',
+    color: GlobalStyles.colors.primary700,
     borderRadius: 6,
     width: '100%',
     padding: 16,

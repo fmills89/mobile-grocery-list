@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { GlobalStyles } from '../constants/styles';
 
 function GroceryItem(props) {
   return (
@@ -20,13 +21,13 @@ const styles = StyleSheet.create({
   groceryItem: {
     margin: 8,
     borderRadius: 6,
-    backgroundColor: '#5e0acc',
+    backgroundColor: GlobalStyles.colors.accent500,
   },
   pressedItem: {
     opacity: 0.5,
   },
   groceryText: {
-    color: 'white',
+    color: GlobalStyles.colors.primary700,
     padding: 8,
   },
 });

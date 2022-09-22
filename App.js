@@ -39,7 +39,7 @@ export default function App() {
       <View style={styles.appContainer}>
         <Button
           title="Add Grocery Item"
-          color={GlobalStyles.colors.primary300}
+          color={GlobalStyles.colors.accent500}
           onPress={startAddGroceryHandler}
         />
         <GroceryInput
@@ -73,8 +73,9 @@ export default function App() {
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    paddingTop: 50,
+    paddingTop: 60,
     paddingHorizontal: 16,
+    backgroundColor: GlobalStyles.colors.primary800,
   },
   groceryContainer: {
     flex: 4,
