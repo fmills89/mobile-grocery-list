@@ -1,73 +1,82 @@
+import { useState } from 'react';
+import { StyleSheet, View, FlatList, Button } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
 
-import ManageGroceryList from './screens/ManageGroceryList';
-import RecentGroceries from './screens/RecentGroceries';
-import AllGroceryLists from './screens/AllGroceryLists';
+import GroceryItem from './components/GroceryItem';
+import GroceryInput from './components/GroceryInput';
 import { GlobalStyles } from './constants/styles';
 
-// creating stack const holds results of calling stackNavi
-// stack const will hold object access to two comps
-const Stack = createNativeStackNavigator();
-const BottomTabs = createBottomTabNavigator();
-
-// creating func comp for bottomtabs navi - nested navigation
-function GroceriesOverview() {
-  return (
-    <BottomTabs.Navigator
-      screenOptions={{
-        headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
-        headerTintColor: 'white',
-        tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
-        tabBarActiveTintColor: GlobalStyles.colors.accent500,
-      }}
-    >
-      <BottomTabs.Screen
-        name="RecentGroceries"
-        component={RecentGroceries}
-        options={{
-          title: 'Recent Groceries',
-          tabBarLabel: 'Recent',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="hourglass" size={size} color={color} />
-          ),
-        }}
-      />
-      <BottomTabs.Screen
-        name="AllGroceryLists"
-        component={AllGroceryLists}
-        options={{
-          title: 'All Grocery Lists',
-          tabBarLabel: 'All Lists',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="calendar" size={size} color={color} />
-          ),
-        }}
-      />
-    </BottomTabs.Navigator>
-  );
-}
-
 export default function App() {
+  const [modalIsVisible, setModalIsVisible] = useState(false);
+  // setting to empty array that is what we want to handle
+  const [courseGroceries, setCourseGroceries] = useState([]);
+
+  function startAddGroceryHandler() {
+    setModalIsVisible(true);
+  }
+
+  function endAddGroceryHandler() {
+    setModalIsVisible(false);
+  }
+
+  function addGroceryHandler(enteredGroceryText) {
+    setCourseGroceries(currentCourseGroceries => [
+      ...currentCourseGroceries,
+      { text: enteredGroceryText, id: Math.random().toString() },
+    ]);
+    setModalIsVisible(false);
+  }
+
+  function deleteGroceryHandler(id) {
+    setCourseGroceries(currentCourseGroceries => {
+      return currentCourseGroceries.filter(grocery => grocery.id !== id);
+    });
+  }
+
   return (
     <>
-      <StatusBar style="auto" />
-      {/* setting up navigation config - navi container must be wrapped around all other navigation related comps */}
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="GroceriesOverview"
-            component={GroceriesOverview}
-            options={{
-              headerShown: false,
+      <StatusBar style="dark" />
+      <View style={styles.appContainer}>
+        <Button
+          title="Add Grocery Item"
+          color={GlobalStyles.colors.primary300}
+          onPress={startAddGroceryHandler}
+        />
+        <GroceryInput
+          visible={modalIsVisible}
+          onAddGrocery={addGroceryHandler}
+          onCancel={endAddGroceryHandler}
+        />
+        <View style={styles.groceryContainer}>
+          <FlatList
+            data={courseGroceries}
+            renderItem={itemData => {
+              return (
+                <GroceryItem
+                  text={itemData.item.text}
+                  id={itemData.item.id}
+                  onDeleteItem={deleteGroceryHandler}
+                />
+              );
             }}
+            keyExtractor={(item, index) => {
+              return item.id;
+            }}
+            alwaysBounceVertical={false}
           />
-          <Stack.Screen name="ManageGroceries" component={ManageGroceryList} />
-        </Stack.Navigator>
-      </NavigationContainer>
+        </View>
+      </View>
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  appContainer: {
+    flex: 1,
+    paddingTop: 50,
+    paddingHorizontal: 16,
+  },
+  groceryContainer: {
+    flex: 4,
+  },
+});
