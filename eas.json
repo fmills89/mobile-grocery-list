@@ -16,11 +16,15 @@
       },
       "distribution": "internal"
     },
-    "production": {
-      "credentialsSource": "local"
-    }
+    "production": {}
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "mills_forrest@yahoo.com",
+        "ascAppId": "6443589510",
+        "appleTeamId": "H8FJ93JDY2"
+      }
+    }
   }
 }
