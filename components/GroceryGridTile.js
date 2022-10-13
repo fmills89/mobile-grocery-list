@@ -2,7 +2,7 @@ import { View, Text, Pressable, StyleSheet, Platform } from 'react-native';
 
 function GroceryGridTile({ title, color, onPress }) {
   return (
-    <View style={gridItem}>
+    <View style={styles.gridItem}>
       <Pressable
         android_ripple={{ color: '#ccc' }}
         style={({ pressed }) => [

@@ -3,7 +3,18 @@ import CategoryGridTile from '../components/GroceryGridTile';
 
 import { CATEGORIES } from '../data/data';
 
-function CategoriesScreen({}) {
+function CategoriesScreen({ navigation }) {
+  function renderCatergoryItem(itemData) {
+    // function pressHandler() {
+
+    // }
+    return (
+      <CategoryGridTile
+        title={itemData.item.title}
+        color={itemData.item.color}
+      />
+    );
+  }
   return (
     <FlatList
       data={CATEGORIES}
