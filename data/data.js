@@ -13,3 +13,5 @@ export const CATEGORIES = [
   new Category('c9', 'Cleaners', '#7054FF'),
   new Category('c10', 'Paper Goods', '#7054FF'),
 ];
+
+export const GROCERIES = [new Grocery('m1', ['c1'], 'Cilantro')];

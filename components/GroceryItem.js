@@ -1,15 +1,15 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 
-function GroceryItem(props) {
+function GroceryItem({ id, title }) {
   return (
     <View style={styles.groceryItem}>
       <Pressable
         android_ripple={{ color: '#210644' }}
-        onPress={props.onDeleteItem.bind(this, props.id)}
+        // onPress={props.onDeleteItem.bind(this, props.id)}
         style={({ pressed }) => pressed && styles.pressedItem}
       >
-        <Text style={styles.groceryText}>{props.text}</Text>
+        <Text style={styles.groceryText}>{title}</Text>
       </Pressable>
     </View>
   );

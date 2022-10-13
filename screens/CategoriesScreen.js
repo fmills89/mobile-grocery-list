@@ -5,13 +5,16 @@ import { CATEGORIES } from '../data/data';
 
 function CategoriesScreen({ navigation }) {
   function renderCatergoryItem(itemData) {
-    // function pressHandler() {
-
-    // }
+    function pressHandler() {
+      navigation.navigate('CategoryDetailsScreen', {
+        categoryId: itemData.item.id,
+      });
+    }
     return (
       <CategoryGridTile
         title={itemData.item.title}
         color={itemData.item.color}
+        onPress={pressHandler}
       />
     );
   }
