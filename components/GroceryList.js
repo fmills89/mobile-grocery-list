@@ -25,10 +25,10 @@ function GroceryList({ items }) {
 export default GroceryList;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-  },
+  // container: {
+  //   flex: 1,
+  //   padding: 16,
+  // },
   groceryContainer: {
     flex: 4,
   },

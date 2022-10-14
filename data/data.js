@@ -14,4 +14,8 @@ export const CATEGORIES = [
   new Category('c10', 'Paper Goods', '#7054FF'),
 ];
 
-export const GROCERIES = [new Grocery('m1', ['c1'], 'Cilantro')];
+export const GROCERIES = [
+  new Grocery('m1', ['c1'], 'Cilantro'),
+  new Grocery('m2', ['c1'], 'Cabbage'),
+  new Grocery('m3', ['c2'], 'New York Steak'),
+];
