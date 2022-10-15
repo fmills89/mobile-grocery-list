@@ -10,16 +10,24 @@ import {
 import { GlobalStyles } from '../constants/styles';
 
 function GroceryInput(props) {
-  const [enteredGroceryText, setEnteredGroceryText] = useState('');
+  const [enteredGroceryText, setEnteredGroceryText] = useState({
+    title: '',
+  });
 
-  function groceryInputHandler(enteredText) {
-    setEnteredGroceryText(enteredText);
+  function inputChangedHandler(enteredGroceryText, enteredValue) {
+    setEnteredGroceryText(curEnteredGroceryText => {
+      return {
+        ...curEnteredGroceryText,
+        [enteredGroceryText]: enteredValue,
+      };
+    });
   }
 
   function addGroceryHandler() {
     const groceryData = {
-      title: inputValues.title,
+      title: enteredGroceryText.title,
     };
+    console.log(groceryData);
   }
 
   return (
@@ -32,8 +40,8 @@ function GroceryInput(props) {
         <TextInput
           style={styles.textInput}
           placeholder="Enter grocery item!"
-          onChangeText={groceryInputHandler}
-          value={enteredGroceryText}
+          onChangeText={inputChangedHandler.bind(this, 'title')}
+          value={enteredGroceryText.title}
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
