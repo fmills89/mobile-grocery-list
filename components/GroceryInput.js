@@ -17,8 +17,9 @@ function GroceryInput(props) {
   }
 
   function addGroceryHandler() {
-    props.onAddGrocery(enteredGroceryText);
-    setEnteredGroceryText('');
+    const groceryData = {
+      title: inputValues.title,
+    };
   }
 
   return (
