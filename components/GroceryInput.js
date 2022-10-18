@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 
+import { storeGroceryItem } from '../utils/http';
+
 function GroceryInput(props) {
   const [enteredGroceryText, setEnteredGroceryText] = useState({
     title: '',
@@ -27,7 +29,7 @@ function GroceryInput(props) {
     const groceryData = {
       title: enteredGroceryText.title,
     };
-    console.log(groceryData);
+    storeGroceryItem(groceryData);
   }
 
   return (
