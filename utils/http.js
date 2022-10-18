@@ -10,3 +10,20 @@ export async function storeGroceryItem(groceryData) {
   const id = response.data.name;
   return id;
 }
+
+export async function fetchGroceries() {
+  const response = await axios.get(BACKEND_URL + '/groceries.json');
+
+  const groceries = [];
+
+  // transform data sent back from FB into an array of objects
+  // have the format i need them in
+  for (const key in response.data) {
+    const groceryObj = {
+      id: key,
+      title: response.data[key].title,
+    };
+    groceries.push(groceryObj);
+  }
+  return groceries;
+}

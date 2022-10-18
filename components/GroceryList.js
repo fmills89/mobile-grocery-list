@@ -1,8 +1,21 @@
 import { View, FlatList, StyleSheet } from 'react-native';
+import { useEffect, useState } from 'react';
 
 import GroceryItem from './GroceryItem';
+import { fetchGroceries } from '../utils/http';
 
 function GroceryList({ items }) {
+  const [fetchedGroceries, setFetchedGroceries] = useState([]);
+  console.log(fetchedGroceries);
+
+  useEffect(() => {
+    async function getGroceries() {
+      const groceries = await fetchGroceries();
+      setFetchedGroceries(groceries);
+    }
+    getGroceries();
+  }, []);
+
   function renderGroceryItem(itemData) {
     const item = itemData.item;
     const groceryItemProps = {
