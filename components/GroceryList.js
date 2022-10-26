@@ -6,7 +6,7 @@ import { fetchGroceries } from '../utils/http';
 
 function GroceryList({ items }) {
   const [fetchedGroceries, setFetchedGroceries] = useState([]);
-  console.log(fetchedGroceries);
+  // console.log(fetchedGroceries);
 
   useEffect(() => {
     async function getGroceries() {

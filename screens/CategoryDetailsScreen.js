@@ -14,6 +14,8 @@ function CategoryDetailsScreen({ route, navigation }) {
     return groceryItem.categoryIds.indexOf(catId) >= 0;
   });
 
+  // console.log(displayedGroceries);
+
   useLayoutEffect(() => {
     const categoryTitle = CATEGORIES.find(
       category => category.id === catId
