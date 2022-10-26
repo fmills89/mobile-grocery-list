@@ -13,7 +13,16 @@ function groceriesReducer(state, action) {
       const id = new Date().toString() + Math.random().toString();
       return [{ ...action.payload, id: id }, ...state];
     case 'UPDATE':
+      const updateableGroceryIndex = state.findIndex(
+        grocery => grocery.id === action.payload.id
+      );
+      const updateableGrocery = state[updateableGroceryIndex];
+      const updatedItem = { ...updateableGrocery, ...action.payload.data };
+      const updatedGrocery = [...state];
+      updatedGrocery[updateableGroceryIndex] = updatedItem;
+      return updatedGrocery;
     case 'DELETE':
+      return state.filter(grocery => grocery.id !== action.payload);
     default:
       return state;
   }
