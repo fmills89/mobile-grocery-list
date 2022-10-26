@@ -3,7 +3,7 @@ import { View, Button } from 'react-native';
 import { useState } from 'react';
 
 import { GlobalStyles } from '../constants/styles';
-import GroceryInput from './GroceryInput';
+import GroceryInput from './ManageGrocery/GroceryInput';
 
 function AddGrocery() {
   const [modalIsVisible, setModalIsVisible] = useState(false);

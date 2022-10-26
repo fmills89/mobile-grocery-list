@@ -4,9 +4,17 @@ import { useEffect, useState } from 'react';
 import GroceryItem from './GroceryItem';
 import { fetchGroceries } from '../utils/http';
 
-function GroceryList({ items }) {
+function renderGroceryItem(itemData) {
+  // const item = itemData.item;
+  // const groceryItemProps = {
+  //   id: item.id,
+  //   title: item.title,
+  // };
+  return <GroceryItem {...itemData.item} />;
+}
+function GroceryList({ groceries }) {
   const [fetchedGroceries, setFetchedGroceries] = useState([]);
-  // console.log(fetchedGroceries);
+  console.log(fetchedGroceries);
 
   useEffect(() => {
     async function getGroceries() {
@@ -16,20 +24,12 @@ function GroceryList({ items }) {
     getGroceries();
   }, []);
 
-  function displayGroceryItem(itemData) {
-    const item = itemData.item;
-    const groceryItemProps = {
-      id: item.id,
-      title: item.title,
-    };
-    return <GroceryItem {...groceryItemProps} />;
-  }
   return (
     <View styles={styles.groceryContainer}>
       <FlatList
-        data={items}
+        data={fetchedGroceries}
         keyExtractor={item => item.id}
-        renderItem={displayGroceryItem}
+        renderItem={renderGroceryItem}
       />
     </View>
   );

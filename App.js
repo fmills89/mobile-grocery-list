@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import CategoryDetailsScreen from './screens/CategoryDetailsScreen';
+import GroceryListScreen from './screens/GroceryListScreen';
 import CategoriesScreen from './screens/CategoriesScreen';
 import GroceriesContextProvider from './store/groceries-context';
 
@@ -23,14 +23,11 @@ export default function App() {
               contentStyle: { backgroundColor: '#cccccc' },
             }}
           >
-            <Stack.Screen
+            {/* <Stack.Screen
               name="CategoriesScreen"
               component={CategoriesScreen}
-            />
-            <Stack.Screen
-              name="CategoryDetailsScreen"
-              component={CategoryDetailsScreen}
-            />
+            /> */}
+            <Stack.Screen name="GroceryList" component={GroceryListScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </GroceriesContextProvider>

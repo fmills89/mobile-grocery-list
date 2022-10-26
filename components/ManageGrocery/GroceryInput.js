@@ -7,9 +7,9 @@ import {
   Modal,
   Image,
 } from 'react-native';
-import { GlobalStyles } from '../constants/styles';
+import { GlobalStyles } from '../../constants/styles';
 
-import { storeGroceryItem } from '../utils/http';
+import { storeGroceryItem } from '../../utils/http';
 
 function GroceryInput(props) {
   const [enteredGroceryText, setEnteredGroceryText] = useState({
@@ -37,7 +37,7 @@ function GroceryInput(props) {
       <View style={styles.inputContainer}>
         <Image
           style={styles.image}
-          source={require('../assets/imgs/grocery-icon.png')}
+          source={require('../../assets/imgs/grocery-icon.png')}
         />
         <TextInput
           style={styles.textInput}
