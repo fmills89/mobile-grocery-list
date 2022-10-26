@@ -4,7 +4,7 @@ import CategoryGridTile from '../components/GroceryGridTile';
 import { CATEGORIES } from '../data/data';
 
 function CategoriesScreen({ navigation }) {
-  function renderCatergoryItem(itemData) {
+  function displayCatergoryItem(itemData) {
     function pressHandler() {
       navigation.navigate('CategoryDetailsScreen', {
         categoryId: itemData.item.id,
@@ -22,7 +22,7 @@ function CategoriesScreen({ navigation }) {
     <FlatList
       data={CATEGORIES}
       keyExtractor={item => item.id}
-      renderItem={renderCatergoryItem}
+      renderItem={displayCatergoryItem}
       numColumns={2}
     />
   );

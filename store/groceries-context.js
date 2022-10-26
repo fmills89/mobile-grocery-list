@@ -10,8 +10,8 @@ export const GroceriesContext = createContext({
 function groceriesReducer(state, action) {
   switch (action.type) {
     case 'ADD':
-      const id = new Date().toString() + Math.random().toString();
-      return [{ ...action.payload, id: id }, ...state];
+      // const id = new Date().toString() + Math.random().toString();
+      return [...action.payload, ...state];
     case 'UPDATE':
       const updateableGroceryIndex = state.findIndex(
         grocery => grocery.id === action.payload.id
@@ -30,7 +30,7 @@ function groceriesReducer(state, action) {
 
 function GroceriesContextProvider({ children }) {
   // used for state management - complex scenarios
-  const [groceriesState, dispatch] = useReducer(groceriesReducer);
+  const [groceriesState, dispatch] = useReducer(groceriesReducer, []);
 
   function addGrocery(groceryData) {
     dispatch({ type: 'ADD', payload: groceryData });
@@ -44,7 +44,18 @@ function GroceriesContextProvider({ children }) {
     dispatch({ type: 'UPDATE', payload: { id: id, data: groceryData } });
   }
 
-  return <GroceriesContext>{children}</GroceriesContext>;
+  const value = {
+    groceries: groceriesState,
+    addGrocery: addGrocery,
+    deleteGrocery: deleteGrocery,
+    updateGrocery: updateGrocery,
+  };
+
+  return (
+    <GroceriesContext.Provider value={value}>
+      {children}
+    </GroceriesContext.Provider>
+  );
 }
 
 export default GroceriesContextProvider;

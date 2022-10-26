@@ -16,7 +16,7 @@ function GroceryList({ items }) {
     getGroceries();
   }, []);
 
-  function renderGroceryItem(itemData) {
+  function displayGroceryItem(itemData) {
     const item = itemData.item;
     const groceryItemProps = {
       id: item.id,
@@ -29,7 +29,7 @@ function GroceryList({ items }) {
       <FlatList
         data={items}
         keyExtractor={item => item.id}
-        renderItem={renderGroceryItem}
+        renderItem={displayGroceryItem}
       />
     </View>
   );
