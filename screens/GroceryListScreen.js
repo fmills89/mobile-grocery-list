@@ -8,7 +8,7 @@ import { GlobalStyles } from '../constants/styles';
 import AddGrocery from '../components/AddGrocery';
 import { GroceriesContext } from '../store/groceries-context';
 
-function CategoryDetailsScreen({ route, navigation }) {
+function GroceryListScreen({ route, navigation }) {
   const groceriesCtx = useContext(GroceriesContext);
   // const catId = route.params.categoryId;
 
@@ -38,7 +38,7 @@ function CategoryDetailsScreen({ route, navigation }) {
   );
 }
 
-export default CategoryDetailsScreen;
+export default GroceryListScreen;
 
 const styles = StyleSheet.create({
   appContainer: {

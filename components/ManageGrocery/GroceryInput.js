@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,8 +10,10 @@ import {
 import { GlobalStyles } from '../../constants/styles';
 
 import { storeGroceryItem } from '../../utils/http';
+import { GroceriesContext } from '../../store/groceries-context';
 
 function GroceryInput(props) {
+  const groceriesCtx = useContext(GroceriesContext);
   const [enteredGroceryText, setEnteredGroceryText] = useState({
     title: '',
   });
