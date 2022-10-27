@@ -14,6 +14,7 @@ import { storeGroceryItem } from '../utils/http';
 function GroceryInput(props) {
   const [enteredGroceryText, setEnteredGroceryText] = useState({
     title: '',
+    categoryId: '',
   });
 
   function inputChangedHandler(enteredGroceryText, enteredValue) {
@@ -28,6 +29,7 @@ function GroceryInput(props) {
   function addGroceryHandler() {
     const groceryData = {
       title: enteredGroceryText.title,
+      categoryId: enteredGroceryText.categoryId,
     };
     storeGroceryItem(groceryData);
   }
@@ -44,6 +46,12 @@ function GroceryInput(props) {
           placeholder="Enter grocery item!"
           onChangeText={inputChangedHandler.bind(this, 'title')}
           value={enteredGroceryText.title}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Grocery Category"
+          onChangeText={inputChangedHandler.bind(this, 'categoryId')}
+          value={enteredGroceryText.categoryId}
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>

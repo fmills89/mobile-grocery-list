@@ -1,19 +1,36 @@
 import { View, StyleSheet } from 'react-native';
-import { useLayoutEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 
 import GroceryList from '../components/GroceryList';
+import { fetchGroceries } from '../utils/http';
 import { GROCERIES, CATEGORIES } from '../data/data';
 
 import { GlobalStyles } from '../constants/styles';
 import AddGrocery from '../components/AddGrocery';
 
 function CategoryDetailsScreen({ route, navigation }) {
+  const [fetchedGroceries, setFetchedGroceries] = useState([]);
+  console.log(fetchedGroceries);
+  // var catId dipped into using route - passed from cat screen.js
   const catId = route.params.categoryId;
 
-  const displayedGroceries = GROCERIES.filter(groceryItem => {
-    return groceryItem.categoryIds.indexOf(catId) >= 0;
+  useEffect(() => {
+    async function getGroceries() {
+      const groceries = await fetchGroceries();
+      setFetchedGroceries(groceries);
+    }
+    getGroceries();
+  }, []);
+
+  // using filter method - return groceryItem -> categoryIds
+  // indexOf method passing in catId - grabbing all groceries
+  // w/ specific catId
+  const displayedGroceries = fetchedGroceries.filter(groceryItem => {
+    return groceryItem.categoryId.indexOf(catId) >= 0;
   });
 
+  // populating categories based on model catIds
+  // using navigation to set categoryTitle
   useLayoutEffect(() => {
     const categoryTitle = CATEGORIES.find(
       category => category.id === catId

@@ -1,7 +1,7 @@
 class Grocery {
-  constructor(id, categoryIds, title) {
+  constructor(id, categoryId, title) {
     this.id = id;
-    this.categoryIds = categoryIds;
+    this.categoryId = categoryId;
     this.title = title;
   }
 }
