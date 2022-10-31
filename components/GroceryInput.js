@@ -7,15 +7,15 @@ import {
   Modal,
   Image,
 } from 'react-native';
-import { GlobalStyles } from '../../constants/styles';
+import { GlobalStyles } from '../constants/styles';
 
-import { storeGroceryItem } from '../../utils/http';
-import { GroceriesContext } from '../../store/groceries-context';
+import { storeGroceryItem } from '../utils/http';
 
 function GroceryInput(props) {
-  const groceriesCtx = useContext(GroceriesContext);
+  // const groceriesCtx = useContext(GroceriesContext);
   const [enteredGroceryText, setEnteredGroceryText] = useState({
     title: '',
+    categoryId: '',
   });
 
   function inputChangedHandler(enteredGroceryText, enteredValue) {
@@ -30,16 +30,23 @@ function GroceryInput(props) {
   function addGroceryHandler() {
     const groceryData = {
       title: enteredGroceryText.title,
+      categoryId: enteredGroceryText.categoryId,
     };
     storeGroceryItem(groceryData);
   }
+
+  // combining props.onAddGrocery to close modal - addGroceryHandler to add to database
+  addingGroceryCombined = () => {
+    addGroceryHandler();
+    props.onAddGrocery();
+  };
 
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
         <Image
           style={styles.image}
-          source={require('../../assets/imgs/grocery-icon.png')}
+          source={require('../assets/imgs/grocery-icon.png')}
         />
         <TextInput
           style={styles.textInput}
@@ -47,11 +54,17 @@ function GroceryInput(props) {
           onChangeText={inputChangedHandler.bind(this, 'title')}
           value={enteredGroceryText.title}
         />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Grocery Category"
+          onChangeText={inputChangedHandler.bind(this, 'categoryId')}
+          value={enteredGroceryText.categoryId}
+        />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <Button
               title="Add Grocery"
-              onPress={addGroceryHandler}
+              onPress={addingGroceryCombined}
               color={GlobalStyles.colors.accent500}
             />
           </View>

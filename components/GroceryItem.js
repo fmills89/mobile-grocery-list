@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 
-function GroceryItem({ id, title }) {
+function GroceryItem({ id, title, categoryId }) {
   return (
     <View style={styles.groceryItem}>
       <Pressable
@@ -10,6 +10,7 @@ function GroceryItem({ id, title }) {
         style={({ pressed }) => pressed && styles.pressedItem}
       >
         <Text style={styles.groceryText}>{title}</Text>
+        <Text style={styles.groceryText}>{categoryId}</Text>
       </Pressable>
     </View>
   );

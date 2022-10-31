@@ -22,6 +22,7 @@ export async function fetchGroceries() {
     const groceryObj = {
       id: key,
       title: response.data[key].title,
+      categoryId: response.data[key].categoryId,
     };
     groceries.push(groceryObj);
   }
