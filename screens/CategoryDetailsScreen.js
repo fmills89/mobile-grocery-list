@@ -10,7 +10,7 @@ import AddGrocery from '../components/AddGrocery';
 
 function CategoryDetailsScreen({ route, navigation }) {
   const [fetchedGroceries, setFetchedGroceries] = useState([]);
-  console.log(fetchedGroceries);
+  // console.log(fetchedGroceries);
   // var catId dipped into using route - passed from cat screen.js
   const catId = route.params.categoryId;
 

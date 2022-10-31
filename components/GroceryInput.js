@@ -34,6 +34,12 @@ function GroceryInput(props) {
     storeGroceryItem(groceryData);
   }
 
+  // combining props.onAddGrocery to close modal - addGroceryHandler to add to database
+  addingGroceryCombined = () => {
+    addGroceryHandler();
+    props.onAddGrocery();
+  };
+
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
@@ -57,7 +63,7 @@ function GroceryInput(props) {
           <View style={styles.button}>
             <Button
               title="Add Grocery"
-              onPress={addGroceryHandler}
+              onPress={addingGroceryCombined}
               color={GlobalStyles.colors.accent500}
             />
           </View>
