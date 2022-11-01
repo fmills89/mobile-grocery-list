@@ -28,3 +28,7 @@ export async function fetchGroceries() {
   }
   return groceries;
 }
+
+export function deleteGrocery(id) {
+  return axios.delete(BACKEND_URL + `/groceries/${id}.json`);
+}

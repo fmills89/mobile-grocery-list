@@ -1,13 +1,15 @@
 import { View, Button } from 'react-native';
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import { GlobalStyles } from '../constants/styles';
 import GroceryInput from './GroceryInput';
+import { GroceriesContext, GroceryContext } from '../store/groceries-context';
 
 function AddGrocery() {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   // setting to empty array that is what we want to handle
+  const groceriesCtx = useContext(GroceriesContext);
 
   function startAddGroceryHandler() {
     setModalIsVisible(true);

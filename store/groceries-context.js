@@ -2,7 +2,7 @@ import { createContext, useReducer } from 'react';
 
 export const GroceriesContext = createContext({
   groceries: [],
-  addGrocery: ({ title }) => {},
+  addGrocery: ({ title, categoryId }) => {},
   deleteGrocery: id => {},
   updateGrocery: (id, { title }) => {},
 });
