@@ -33,7 +33,7 @@ function CategoryDetailsScreen({ route, navigation }) {
   // using navigation to set categoryTitle
   useLayoutEffect(() => {
     const categoryTitle = CATEGORIES.find(
-      category => category.id === catId
+      category => category.title === catId
     ).title;
 
     navigation.setOptions({
@@ -44,7 +44,7 @@ function CategoryDetailsScreen({ route, navigation }) {
   return (
     <>
       <View styles={styles.appContainer}>
-        <AddGrocery />
+        {/* <AddGrocery /> */}
         <GroceryList items={displayedGroceries} />
       </View>
     </>

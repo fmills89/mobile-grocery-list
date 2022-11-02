@@ -1,5 +1,6 @@
 import { FlatList } from 'react-native';
 import CategoryGridTile from '../components/GroceryGridTile';
+import AddGrocery from '../components/AddGrocery';
 
 import { CATEGORIES } from '../data/data';
 
@@ -7,7 +8,7 @@ function CategoriesScreen({ navigation }) {
   function renderCatergoryItem(itemData) {
     function pressHandler() {
       navigation.navigate('CategoryDetailsScreen', {
-        categoryId: itemData.item.id,
+        categoryId: itemData.item.title,
       });
     }
     return (
@@ -19,12 +20,15 @@ function CategoriesScreen({ navigation }) {
     );
   }
   return (
-    <FlatList
-      data={CATEGORIES}
-      keyExtractor={item => item.id}
-      renderItem={renderCatergoryItem}
-      numColumns={2}
-    />
+    <>
+      <AddGrocery />
+      <FlatList
+        data={CATEGORIES}
+        keyExtractor={item => item.title}
+        renderItem={renderCatergoryItem}
+        numColumns={2}
+      />
+    </>
   );
 }
 
