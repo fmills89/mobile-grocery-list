@@ -7,7 +7,9 @@ import {
   Modal,
   Image,
 } from 'react-native';
+
 import { GlobalStyles } from '../constants/styles';
+import SelectList from 'react-native-dropdown-select-list';
 
 import { storeGroceryItem } from '../utils/http';
 
@@ -17,6 +19,10 @@ function GroceryInput(props) {
     title: '',
     categoryId: '',
   });
+
+  const [selectedLanguage, setSelectedLanguage] = useState('');
+
+  const data = [{ key: '1', value: 'Produce' }];
 
   function inputChangedHandler(enteredGroceryText, enteredValue) {
     setEnteredGroceryText(curEnteredGroceryText => {
@@ -54,12 +60,21 @@ function GroceryInput(props) {
           onChangeText={inputChangedHandler.bind(this, 'title')}
           value={enteredGroceryText.title}
         />
-        <TextInput
+
+        {/* <TextInput
           style={styles.textInput}
           placeholder="Grocery Category"
           onChangeText={inputChangedHandler.bind(this, 'categoryId')}
           value={enteredGroceryText.categoryId}
-        />
+        /> */}
+        <View style={styles.dropDownListContainer}>
+          <SelectList
+            boxStyles={styles.dropdownList}
+            setSelectedLanguage={setSelectedLanguage}
+            data={data}
+            onSelect={() => alert(selected)}
+          />
+        </View>
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <Button
@@ -91,6 +106,15 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     margin: 20,
+  },
+  dropDownListContainer: {
+    borderWidth: 1,
+    width: '100%',
+    padding: 6,
+    borderRadius: 6,
+    marginHorizontal: 20,
+    borderColor: GlobalStyles.colors.accent500,
+    backgroundColor: 'white',
   },
   textInput: {
     borderWidth: 1,
