@@ -12,6 +12,7 @@ import { GlobalStyles } from '../constants/styles';
 import SelectList from 'react-native-dropdown-select-list';
 
 import { storeGroceryItem } from '../utils/http';
+import { CATEGORIES } from '../data/data';
 
 function GroceryInput(props) {
   // const groceriesCtx = useContext(GroceriesContext);
@@ -20,9 +21,12 @@ function GroceryInput(props) {
     categoryId: '',
   });
 
-  const [selectedLanguage, setSelectedLanguage] = useState('');
+  // const [selectedLanguage, setSelectedLanguage] = useState('');
 
-  const data = [{ key: '1', value: 'Produce' }];
+  // const data = [
+  //   { key: '1', value: 'Produce' },
+  //   { key: 2, value: 'Deli' },
+  // ];
 
   function inputChangedHandler(enteredGroceryText, enteredValue) {
     setEnteredGroceryText(curEnteredGroceryText => {
@@ -70,15 +74,16 @@ function GroceryInput(props) {
         <View style={styles.dropDownListContainer}>
           <SelectList
             boxStyles={styles.dropdownList}
+            inputStyles={{ fontSize: 13 }}
+            placeholder="Department"
             setSelectedLanguage={setSelectedLanguage}
-            data={data}
             onSelect={() => alert(selected)}
           />
         </View>
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <Button
-              title="Add Grocery"
+              title="Add"
               onPress={addingGroceryCombined}
               color={GlobalStyles.colors.accent500}
             />
@@ -100,7 +105,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: GlobalStyles.colors.gray700,
+    backgroundColor: '#cccccc',
   },
   image: {
     width: 100,
@@ -112,25 +117,25 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 6,
     borderRadius: 6,
-    marginHorizontal: 20,
-    borderColor: GlobalStyles.colors.accent500,
     backgroundColor: 'white',
   },
   textInput: {
     borderWidth: 1,
-    borderColor: GlobalStyles.colors.accent500,
+
     backgroundColor: 'white',
     color: GlobalStyles.colors.primary700,
     borderRadius: 6,
     width: '100%',
-    padding: 16,
+    padding: 12,
   },
   buttonContainer: {
     marginTop: 16,
     flexDirection: 'row',
+    alignItems: 'baseline',
   },
   button: {
     width: 100,
+    height: 100,
     marginHorizontal: 8,
   },
 });
