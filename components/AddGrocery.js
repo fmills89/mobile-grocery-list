@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { GlobalStyles } from '../constants/styles';
 import GroceryInput from './GroceryInput';
 
+// adding testing comment
+
 function AddGrocery() {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   // setting to empty array that is what we want to handle
