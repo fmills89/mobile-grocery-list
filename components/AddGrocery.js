@@ -6,6 +6,9 @@ import { GlobalStyles } from '../constants/styles';
 import GroceryInput from './GroceryInput';
 import { GroceriesContext, GroceryContext } from '../store/groceries-context';
 
+// adding testing comment
+// adding addl testing comment
+
 function AddGrocery() {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   // setting to empty array that is what we want to handle
