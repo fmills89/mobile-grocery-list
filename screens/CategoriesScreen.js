@@ -1,6 +1,7 @@
 import { FlatList } from 'react-native';
 import CategoryGridTile from '../components/GroceryGridTile';
 import AddGrocery from '../components/AddGrocery';
+import React from 'react';
 
 import { CATEGORIES } from '../data/data';
 

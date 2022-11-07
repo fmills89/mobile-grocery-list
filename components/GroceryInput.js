@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import { GlobalStyles } from '../constants/styles';
-import SelectList from 'react-native-dropdown-select-list';
+// import SelectList from 'react-native-dropdown-select-list';
 
 import { storeGroceryItem } from '../utils/http';
 import { CATEGORIES } from '../data/data';
@@ -20,13 +20,6 @@ function GroceryInput(props) {
     title: '',
     categoryId: '',
   });
-
-  // const [selectedLanguage, setSelectedLanguage] = useState('');
-
-  // const data = [
-  //   { key: '1', value: 'Produce' },
-  //   { key: 2, value: 'Deli' },
-  // ];
 
   function inputChangedHandler(enteredGroceryText, enteredValue) {
     setEnteredGroceryText(curEnteredGroceryText => {
@@ -64,22 +57,12 @@ function GroceryInput(props) {
           onChangeText={inputChangedHandler.bind(this, 'title')}
           value={enteredGroceryText.title}
         />
-
-        {/* <TextInput
+        <TextInput
           style={styles.textInput}
           placeholder="Grocery Category"
           onChangeText={inputChangedHandler.bind(this, 'categoryId')}
           value={enteredGroceryText.categoryId}
-        /> */}
-        <View style={styles.dropDownListContainer}>
-          <SelectList
-            boxStyles={styles.dropdownList}
-            inputStyles={{ fontSize: 13 }}
-            placeholder="Department"
-            setSelectedLanguage={setSelectedLanguage}
-            onSelect={() => alert(selected)}
-          />
-        </View>
+        />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <Button
