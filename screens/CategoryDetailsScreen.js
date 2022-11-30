@@ -20,7 +20,7 @@ function CategoryDetailsScreen({ route, navigation }) {
       setFetchedGroceries(groceries);
     }
     getGroceries();
-  }, []);
+  }, [fetchedGroceries]);
 
   // using filter method - return groceryItem -> categoryIds
   // indexOf method passing in catId - grabbing all groceries
