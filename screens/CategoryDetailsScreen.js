@@ -44,7 +44,7 @@ function CategoryDetailsScreen({ route, navigation }) {
   return (
     <>
       <View styles={styles.appContainer}>
-        <AddGrocery />
+        {/* <AddGrocery /> */}
         <GroceryList items={displayedGroceries} />
       </View>
     </>

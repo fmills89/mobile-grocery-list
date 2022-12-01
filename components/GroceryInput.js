@@ -7,6 +7,7 @@ import {
   Modal,
   Image,
 } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import { GlobalStyles } from '../constants/styles';
 
 import { storeGroceryItem } from '../utils/http';
@@ -16,6 +17,8 @@ function GroceryInput(props) {
     title: '',
     categoryId: '',
   });
+
+  const [selectedLanguage, setSelectedLanguage] = useState('');
 
   function inputChangedHandler(enteredGroceryText, enteredValue) {
     setEnteredGroceryText(curEnteredGroceryText => {
@@ -53,6 +56,14 @@ function GroceryInput(props) {
           onChangeText={inputChangedHandler.bind(this, 'title')}
           value={enteredGroceryText.title}
         />
+        <Picker
+          style={styles.picker}
+          selectedValue={enteredGroceryText.categoryId}
+          onValueChange={inputChangedHandler.bind(this, 'categoryId')}
+        >
+          <Picker.Item label="Produce" value="c1" />
+          <Picker.Item label="Deli" value="c2" />
+        </Picker>
         <TextInput
           style={styles.textInput}
           placeholder="Grocery Category"
@@ -99,6 +110,13 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     width: '100%',
     padding: 16,
+  },
+  picker: {
+    borderWidth: 1,
+    borderColor: GlobalStyles.colors.accent500,
+    backgroundColor: '#7054FF',
+    width: '100%',
+    borderRadius: 6,
   },
   buttonContainer: {
     marginTop: 16,

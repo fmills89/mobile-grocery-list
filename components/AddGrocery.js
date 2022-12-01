@@ -35,7 +35,7 @@ function AddGrocery() {
     <View>
       <Button
         title="Add Grocery Item"
-        color={GlobalStyles.colors.accent500}
+        color={'#7054FF'}
         onPress={startAddGroceryHandler}
       />
       <GroceryInput
