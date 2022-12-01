@@ -6,7 +6,7 @@ function GroceryItem({ id, title, categoryId }) {
   const groceryId = id;
 
   function deleteGroceryHandler() {
-    // console.log(groceryId);
+    console.log(groceryId);
     deleteGrocery(groceryId);
   }
 
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   groceryText: {
-    color: 'black',
+    color: GlobalStyles.colors.primary700,
     padding: 8,
   },
 });

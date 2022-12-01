@@ -33,7 +33,7 @@ function CategoryDetailsScreen({ route, navigation }) {
   // using navigation to set categoryTitle
   useLayoutEffect(() => {
     const categoryTitle = CATEGORIES.find(
-      category => category.title === catId
+      category => category.id === catId
     ).title;
 
     navigation.setOptions({

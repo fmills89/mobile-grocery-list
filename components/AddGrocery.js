@@ -1,15 +1,16 @@
 import { View, Button } from 'react-native';
 
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 
 import { GlobalStyles } from '../constants/styles';
 import GroceryInput from './GroceryInput';
-import { GroceriesContext, GroceryContext } from '../store/groceries-context';
+
+// adding testing comment
+// adding addl testing comment
 
 function AddGrocery() {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   // setting to empty array that is what we want to handle
-  const groceriesCtx = useContext(GroceriesContext);
 
   function startAddGroceryHandler() {
     setModalIsVisible(true);
@@ -34,7 +35,7 @@ function AddGrocery() {
     <View>
       <Button
         title="Add Grocery Item"
-        color={GlobalStyles.colors.accent500}
+        color={'#7054FF'}
         onPress={startAddGroceryHandler}
       />
       <GroceryInput

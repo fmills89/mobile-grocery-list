@@ -12,7 +12,6 @@ function GroceryList({ items }) {
       title: item.title,
       categoryId: item.categoryId,
     };
-
     return <GroceryItem {...groceryItemProps} />;
   }
   return (

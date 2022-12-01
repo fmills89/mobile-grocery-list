@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -7,19 +7,18 @@ import {
   Modal,
   Image,
 } from 'react-native';
-
+import { Picker } from '@react-native-picker/picker';
 import { GlobalStyles } from '../constants/styles';
-// import SelectList from 'react-native-dropdown-select-list';
 
 import { storeGroceryItem } from '../utils/http';
-import { CATEGORIES } from '../data/data';
 
 function GroceryInput(props) {
-  // const groceriesCtx = useContext(GroceriesContext);
   const [enteredGroceryText, setEnteredGroceryText] = useState({
     title: '',
     categoryId: '',
   });
+
+  const [selectedLanguage, setSelectedLanguage] = useState('');
 
   function inputChangedHandler(enteredGroceryText, enteredValue) {
     setEnteredGroceryText(curEnteredGroceryText => {
@@ -57,6 +56,14 @@ function GroceryInput(props) {
           onChangeText={inputChangedHandler.bind(this, 'title')}
           value={enteredGroceryText.title}
         />
+        <Picker
+          style={styles.picker}
+          selectedValue={enteredGroceryText.categoryId}
+          onValueChange={inputChangedHandler.bind(this, 'categoryId')}
+        >
+          <Picker.Item label="Produce" value="c1" />
+          <Picker.Item label="Deli" value="c2" />
+        </Picker>
         <TextInput
           style={styles.textInput}
           placeholder="Grocery Category"
@@ -66,7 +73,7 @@ function GroceryInput(props) {
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <Button
-              title="Add"
+              title="Add Grocery"
               onPress={addingGroceryCombined}
               color={GlobalStyles.colors.accent500}
             />
@@ -88,37 +95,35 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#cccccc',
+    backgroundColor: GlobalStyles.colors.primary800,
   },
   image: {
     width: 100,
     height: 100,
     margin: 20,
   },
-  dropDownListContainer: {
-    borderWidth: 1,
-    width: '100%',
-    padding: 6,
-    borderRadius: 6,
-    backgroundColor: 'white',
-  },
   textInput: {
     borderWidth: 1,
-
+    borderColor: GlobalStyles.colors.accent500,
     backgroundColor: 'white',
     color: GlobalStyles.colors.primary700,
     borderRadius: 6,
     width: '100%',
-    padding: 12,
+    padding: 16,
+  },
+  picker: {
+    borderWidth: 1,
+    borderColor: GlobalStyles.colors.accent500,
+    backgroundColor: '#7054FF',
+    width: '100%',
+    borderRadius: 6,
   },
   buttonContainer: {
     marginTop: 16,
     flexDirection: 'row',
-    alignItems: 'baseline',
   },
   button: {
     width: 100,
-    height: 100,
     marginHorizontal: 8,
   },
 });
