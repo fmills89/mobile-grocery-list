@@ -18,7 +18,6 @@ function GroceryItem({ id, title, categoryId }) {
         style={({ pressed }) => pressed && styles.pressedItem}
       >
         <Text style={styles.groceryText}>{title}</Text>
-        <Text style={styles.groceryText}>{categoryId}</Text>
       </Pressable>
     </View>
   );

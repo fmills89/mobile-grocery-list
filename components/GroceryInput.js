@@ -18,8 +18,6 @@ function GroceryInput(props) {
     categoryId: '',
   });
 
-  const [selectedLanguage, setSelectedLanguage] = useState('');
-
   function inputChangedHandler(enteredGroceryText, enteredValue) {
     setEnteredGroceryText(curEnteredGroceryText => {
       return {
@@ -64,12 +62,12 @@ function GroceryInput(props) {
           <Picker.Item label="Produce" value="c1" />
           <Picker.Item label="Deli" value="c2" />
         </Picker>
-        <TextInput
+        {/* <TextInput
           style={styles.textInput}
           placeholder="Grocery Category"
           onChangeText={inputChangedHandler.bind(this, 'categoryId')}
           value={enteredGroceryText.categoryId}
-        />
+        /> */}
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <Button
