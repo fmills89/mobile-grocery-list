@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   groceryText: {
-    color: GlobalStyles.colors.primary700,
+    color: 'white',
     padding: 8,
   },
 });
