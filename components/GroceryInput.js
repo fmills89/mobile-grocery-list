@@ -52,26 +52,29 @@ function GroceryInput(props) {
           style={styles.textInput}
           placeholder="Enter grocery item!"
           onChangeText={inputChangedHandler.bind(this, 'title')}
-          value={enteredGroceryText.title}
+          // value={enteredGroceryText.title}
         />
-        <Picker
-          style={styles.picker}
-          selectedValue={enteredGroceryText.categoryId}
-          onValueChange={inputChangedHandler.bind(this, 'categoryId')}
-        >
-          <Picker.Item label="Produce" value="c1" />
-          <Picker.Item label="Deli" value="c2" />
-        </Picker>
-        {/* <TextInput
-          style={styles.textInput}
-          placeholder="Grocery Category"
-          onChangeText={inputChangedHandler.bind(this, 'categoryId')}
-          value={enteredGroceryText.categoryId}
-        /> */}
+        <View style={styles.picker}>
+          <Picker
+            selectedValue={enteredGroceryText.categoryId}
+            onValueChange={inputChangedHandler.bind(this, 'categoryId')}
+          >
+            <Picker.Item label="Produce" value="c1" />
+            <Picker.Item label="Deli" value="c2" />
+            <Picker.Item label="Dairy" value="c3" />
+            <Picker.Item label="Meat" value="c4" />
+            <Picker.Item label="Dry/Baking Goods" value="c5" />
+            <Picker.Item label="Canned/Jarred Goods" value="c6" />
+            <Picker.Item label="Beverages" value="c7" />
+            <Picker.Item label="Personal Care" value="c8" />
+            <Picker.Item label="Cleaners" value="c9" />
+            <Picker.Item label="Paper Goods" value="c10" />
+          </Picker>
+        </View>
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <Button
-              title="Add Grocery"
+              title="Add"
               onPress={addingGroceryCombined}
               color={GlobalStyles.colors.accent500}
             />
@@ -112,7 +115,7 @@ const styles = StyleSheet.create({
   picker: {
     borderWidth: 1,
     borderColor: GlobalStyles.colors.accent500,
-    backgroundColor: '#7054FF',
+    backgroundColor: 'white',
     width: '100%',
     borderRadius: 6,
   },
