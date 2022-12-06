@@ -26,6 +26,7 @@ export default function App() {
             <Stack.Screen
               name="CategoriesScreen"
               component={CategoriesScreen}
+              options={{ title: 'Grocery Tiles' }}
             />
             <Stack.Screen
               name="CategoryDetailsScreen"
